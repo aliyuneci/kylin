@@ -34,8 +34,8 @@ RUN set -x \
 ARG HADOOP_VERSION=2.7.4
 ARG HIVE_VERSION=1.2.2
 ARG HBASE_VERSION=1.3.1
-ARG SPARK_VERSION=2.2.1
-ARG ZK_VERSION=3.4.6
+ARG SPARK_VERSION=2.3.2-bin-hadoop2.7
+ARG ZK_VERSION=3.7.0
 
 ARG APACHE_HOME=/apache
 
@@ -52,7 +52,7 @@ RUN set -x \
 
 #install hive
 ENV HIVE_HOME=$APACHE_HOME/hive 
-ADD hadoop-binary/apache-hive-${HIVE_VERSION}.tar.gz $APACHE_HOME
+ADD hadoop-binary/hive-${HIVE_VERSION}.tar.gz $APACHE_HOME
 RUN set -x \
     && ln -s $APACHE_HOME/apache-hive-${HIVE_VERSION} $HIVE_HOME
 
@@ -64,7 +64,7 @@ RUN set -x \
 
 #install spark
 ENV SPARK_HOME=$APACHE_HOME/spark
-ADD hadoop-binary/spark-${SPARK_VERSION}.tar.gz $APACHE_HOME
+ADD hadoop-binary/spark-${SPARK_VERSION}.tgz $APACHE_HOME
 RUN set -x \
     && ln -s $APACHE_HOME/spark-${SPARK_VERSION} $SPARK_HOME
 

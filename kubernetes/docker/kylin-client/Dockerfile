@@ -15,13 +15,13 @@
 # limitations under the License.
 #
 
-FROM hadoop-client:cdh57
+FROM hadoop-client:apache-hadoop2.7
 
 MAINTAINER Apache Kylin
 
 ARG USER=apache_kylin
 ARG USER_HOME=/home/${USER}
-ARG KYLIN_VERSION=apache-kylin-3.0.1-bin-cdh57
+ARG KYLIN_VERSION=apache-kylin-3.0.1-bin-hadoop3
 
 ARG HADOOP_CONF_HOME=/etc/hadoop/conf
 ARG HIVE_CONF_HOME=/etc/hive/conf

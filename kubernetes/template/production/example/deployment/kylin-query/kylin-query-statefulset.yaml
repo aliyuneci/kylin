@@ -25,7 +25,7 @@ metadata:
     role: query
     environment: poc
     version: 3.0.1
-    hadoop.version: cdh5.7
+    hadoop.version: 2.7.4
 spec:
   serviceName: kylin-query-svc
   replicas: 1
@@ -41,7 +41,7 @@ spec:
     spec:
       containers:
       - name: kylin
-        image: kylin-client:3.0.1-cdh57
+        image: registry-vpc.cn-shanghai.aliyuncs.com/ecitest/kylin-client:3.0.1-hadoop3
         imagePullPolicy: IfNotPresent
         command:
         - sh
