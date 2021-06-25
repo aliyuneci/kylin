@@ -16,7 +16,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://cdh-master:8020</value>
+    <value>hdfs://139.196.239.70:9000</value>
   </property>
   <property>
     <name>fs.trash.interval</name>
