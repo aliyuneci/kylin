@@ -32,10 +32,10 @@ RUN set -x \
 
 # version variables
 ARG HADOOP_VERSION=2.7.4
-ARG HIVE_VERSION=1.2.2
+ARG HIVE_VERSION=1.2.2-bin
 ARG HBASE_VERSION=1.3.1
 ARG SPARK_VERSION=2.3.2-bin-hadoop2.7
-ARG ZK_VERSION=3.7.0
+ARG ZK_VERSION=3.7.0-bin
 
 ARG APACHE_HOME=/apache
 
@@ -52,7 +52,7 @@ RUN set -x \
 
 #install hive
 ENV HIVE_HOME=$APACHE_HOME/hive 
-ADD hadoop-binary/hive-${HIVE_VERSION}.tar.gz $APACHE_HOME
+ADD hadoop-binary/apache-hive-${HIVE_VERSION}.tar.gz $APACHE_HOME
 RUN set -x \
     && ln -s $APACHE_HOME/apache-hive-${HIVE_VERSION} $HIVE_HOME
 
@@ -70,9 +70,9 @@ RUN set -x \
 
 #install zk
 ENV ZK_HOME=$APACHE_HOME/zookeeper
-ADD hadoop-binary/zookeeper-${ZK_VERSION}.tar.gz $APACHE_HOME
+ADD hadoop-binary/apache-zookeeper-${ZK_VERSION}.tar.gz $APACHE_HOME
 RUN set -x \
-    && ln -s $APACHE_HOME/zookeeper-${ZK_VERSION} $ZK_HOME
+    && ln -s $APACHE_HOME/apache-zookeeper-${ZK_VERSION} $ZK_HOME
 
 ENV PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$HIVE_HOME/bin:$HBASE_HOME/bin:$ZK_HOME/bin
 
