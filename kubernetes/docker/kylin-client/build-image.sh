@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-docker build -t kylin-client:3.0.1-hadoop3 .
+docker build -t kylin-client:3.1.2-hadoop2 .

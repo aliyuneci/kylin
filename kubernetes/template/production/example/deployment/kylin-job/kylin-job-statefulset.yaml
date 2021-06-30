@@ -42,7 +42,7 @@ spec:
       containers:
         - name: kylin
           image: registry-vpc.cn-shanghai.aliyuncs.com/ecitest/kylin-client:3.0.1-hadoop3
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           command:
             - sh
             - -c
@@ -67,7 +67,7 @@ spec:
             - name: hbase-config
               mountPath: /etc/hbase/conf
             - name: kylin-logs
-              mountPath: /home/apache_kylin/kylin/logs
+              mountPath: /home/apache_kylin/kylin/log
             - name: tomcat-logs
               mountPath: /home/apache_kylin/kylin/tomcat/logs
           resources:

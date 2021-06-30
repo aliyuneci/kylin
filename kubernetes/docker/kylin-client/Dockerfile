@@ -21,14 +21,14 @@ MAINTAINER Apache Kylin
 
 ARG USER=apache_kylin
 ARG USER_HOME=/home/${USER}
-ARG KYLIN_VERSION=apache-kylin-3.0.1-bin-hadoop3
+ARG KYLIN_VERSION=apache-kylin-3.1.2-bin-hbase1x
 
 ARG HADOOP_CONF_HOME=/etc/hadoop/conf
 ARG HIVE_CONF_HOME=/etc/hive/conf
 ARG HBASE_CONF_HOME=/etc/hbase/conf
 ARG SPARK_CONF_HOME=$KYLIN_HOME/hadoop-conf
 
-ENV SPARK_HOME /opt/spark-2.3.2-bin-hadoop2.7
+ENV SPARK_HOME /apache/spark
 ENV KYLIN_HOME=$USER_HOME/kylin
 
 WORKDIR /tmp
