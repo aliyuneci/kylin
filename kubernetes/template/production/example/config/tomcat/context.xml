@@ -39,7 +39,6 @@
     <!-- -->
     <Manager className="de.javakaffee.web.msm.MemcachedBackupSessionManager"
              memcachedNodes="n1:kylin-memcached-0.cache-svc.kylin-example.svc.cluster.local:11211"
-             failoverNodes="n1"
              storageKeyPrefix="context"
              requestUriIgnorePattern=".*\.(ico|png|gif|jpg|css|js)$"
     />

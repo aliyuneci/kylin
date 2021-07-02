@@ -35,3 +35,11 @@ cluster, will reduce cost of maintenance and extension.
 ### Reference 
 - JIRA ticket: https://issues.apache.org/jira/browse/KYLIN-4447
 - DockerHub: https://hub.docker.com/r/apachekylin/kylin-client
+
+## kubernetes
+### dependency：
+ARG HADOOP_VERSION=2.7.4
+ARG HIVE_VERSION=2.3.9-bin
+ARG HBASE_VERSION=1.7.0
+ARG SPARK_VERSION=2.3.2-bin-hadoop2.7
+ARG ZK_VERSION=3.7.0-bin

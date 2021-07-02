@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: kylin
-    image: registry-vpc.cn-shanghai.aliyuncs.com/ecitest/kylin-client:3.1.2-hadoop2-0629
+    image: registry-vpc.cn-shanghai.aliyuncs.com/ecitest/kylin-client:3.1.2-hadoop2-0702a
     imagePullPolicy: Always
     env:
     - name: HADOOP_CLASSPATH
@@ -15,10 +15,9 @@ spec:
     - sh
     - -c
     args:
-#    - cp $KYLIN_HOME/tomcat-config/* $KYLIN_HOME/tomcat/conf;
-#      cp $KYLIN_HOME/kylin-more-config $KYLIN_HOME/tomcat/webapps/kylin/WEB-INF/classes/;
-#      $TOOL_HOME/bootstrap.sh server;
-    - sleep 1000000;
+    - cp $KYLIN_HOME/tomcat-config/* $KYLIN_HOME/tomcat/conf;
+      cp $KYLIN_HOME/kylin-more-config $KYLIN_HOME/tomcat/webapps/kylin/WEB-INF/classes/;
+      sleep 1000000;
     volumeMounts:
     - name: kylin-query-config
       mountPath: /home/apache_kylin/kylin/conf
@@ -42,8 +41,6 @@ spec:
       mountPath: /home/apache_kylin/kylin/log
     - name: tomcat-logs
       mountPath: /home/apache_kylin/kylin/tomcat/logs
-    - name: zoo-config
-      mountPath: /apache/zookeeper/conf/
     resources:
       requests:
         memory: 4Gi
@@ -79,7 +76,4 @@ spec:
   - configMap:
      name: kylin-more-config
     name: kylin-more-config
-  - configMap:
-      name: zoo-config
-    name: zoo-config
   restartPolicy: Never

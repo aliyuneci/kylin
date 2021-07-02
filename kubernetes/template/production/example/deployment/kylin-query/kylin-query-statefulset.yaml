@@ -41,8 +41,11 @@ spec:
     spec:
       containers:
       - name: kylin
-        image: registry-vpc.cn-shanghai.aliyuncs.com/ecitest/kylin-client:3.0.1-hadoop3
+        image: registry-vpc.cn-shanghai.aliyuncs.com/ecitest/kylin-client:3.1.2-hadoop2-0702
         imagePullPolicy: Always
+        env:
+        - name: HADOOP_CLASSPATH
+          value: $HADOOP_CLASSPATH:$HBASE_HOME/lib/*:$HBASE_HOME/lib/hbase-common-1.7.0.jar
         command:
         - sh
         - -c
@@ -63,34 +66,40 @@ spec:
             mountPath: /home/apache_kylin/kylin/kylin-more-config/
           - name: hadoop-config
             mountPath: /etc/hadoop/conf
+          - name: hadoop-config
+            mountPath: /apache/hadoop/etc/hadoop
           - name: hive-config
             mountPath: /etc/hive/conf
+          - name: hive-config
+            mountPath: /apache/hive/conf
           - name: hbase-config
             mountPath: /etc/hbase/conf
+          - name: hbase-config
+            mountPath: /apache/hbase/conf
           - name: kylin-logs
             mountPath: /home/apache_kylin/kylin/log
           - name: tomcat-logs
             mountPath: /home/apache_kylin/kylin/tomcat/logs
         resources:
           requests:
-            memory: 2Gi
-            cpu: 700m
+            memory: 4Gi
+            cpu: 2000m
           limits:
-            memory: 2Gi
-            cpu: 700m
-#        livenessProbe:
-#          httpGet:
-#            path: /kylin
-#            port: 7070
-#          initialDelaySeconds: 100
-#          periodSeconds: 5
-#          failureThreshold: 3
-#        readinessProbe:
-#          httpGet:
-#            path: /kylin
-#            port: 7070
-#          initialDelaySeconds: 30
-#          periodSeconds: 5
+            memory: 4Gi
+            cpu: 2000m
+        livenessProbe:
+          httpGet:
+            path: /kylin
+            port: 7070
+          initialDelaySeconds: 100
+          periodSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /kylin
+            port: 7070
+          initialDelaySeconds: 30
+          periodSeconds: 5
       - name: filebeat
         image: docker.elastic.co/beats/filebeat:6.4.3
         args:
